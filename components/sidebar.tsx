@@ -37,9 +37,13 @@ export function Sidebar({ type, userName = "Guest" }: SidebarProps) {
   const navItems = type === "admin" ? adminNavItems : memberNavItems
 
   return (
-    <aside className="flex h-screen w-64 flex-col border-r border-border bg-sidebar">
+    <aside className="flex h-full w-64 flex-col border-r border-border bg-sidebar">
       {/* Logo */}
-      <div className="flex items-center gap-3 border-b border-sidebar-border px-6 py-5">
+      <Link
+        href="/"
+        aria-label="Back to landing page"
+        className="flex items-center gap-3 border-b border-sidebar-border px-6 py-5 transition-colors hover:bg-sidebar-accent/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+      >
         <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary">
           <Heart className="h-5 w-5 text-primary-foreground" fill="currentColor" />
         </div>
@@ -49,7 +53,7 @@ export function Sidebar({ type, userName = "Guest" }: SidebarProps) {
             {type === "admin" ? "Admin Portal" : "Member Portal"}
           </p>
         </div>
-      </div>
+      </Link>
 
       {/* Navigation */}
       <nav className="flex-1 space-y-1 p-4">
@@ -89,9 +93,11 @@ export function Sidebar({ type, userName = "Guest" }: SidebarProps) {
             <p className="truncate text-sm font-medium text-sidebar-foreground">{userName}</p>
             <p className="text-xs text-muted-foreground">{type === "admin" ? "Administrator" : "Member"}</p>
           </div>
-          <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-sidebar-foreground">
-            <LogOut className="h-4 w-4" />
-            <span className="sr-only">Sign out</span>
+          <Button asChild variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-sidebar-foreground">
+            <Link href="/" aria-label="Sign out and return to landing page">
+              <LogOut className="h-4 w-4" />
+              <span className="sr-only">Sign out and return to landing page</span>
+            </Link>
           </Button>
         </div>
       </div>

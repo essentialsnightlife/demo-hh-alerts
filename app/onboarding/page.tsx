@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { Heart, ArrowRight, ArrowLeft, Check, User, Phone, Shield, Calendar } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -57,16 +58,20 @@ export default function OnboardingPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="flex-1 bg-background">
       {/* Header */}
       <header className="border-b border-border bg-card">
         <div className="mx-auto flex max-w-4xl items-center justify-between px-6 py-4">
-          <div className="flex items-center gap-3">
+          <Link
+            href="/"
+            aria-label="Back to landing page"
+            className="flex items-center gap-3 rounded-md transition-opacity hover:opacity-85 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4"
+          >
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary">
               <Heart className="h-5 w-5 text-primary-foreground" fill="currentColor" />
             </div>
             <span className="text-xl font-semibold text-foreground">Heavenly Hands</span>
-          </div>
+          </Link>
           <div className="hidden sm:block">
             <p className="text-sm text-muted-foreground">
               Step {currentStep} of 4

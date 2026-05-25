@@ -31,16 +31,20 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background p-6">
+    <div className="flex flex-1 items-center justify-center bg-background p-6">
       <div className="w-full max-w-md">
         {/* Logo */}
-        <div className="mb-8 flex flex-col items-center">
+        <Link
+          href="/"
+          aria-label="Back to landing page"
+          className="mb-8 flex flex-col items-center rounded-md transition-opacity hover:opacity-85 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4"
+        >
           <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary">
             <Heart className="h-7 w-7 text-primary-foreground" fill="currentColor" />
           </div>
           <h1 className="mt-4 text-2xl font-bold text-foreground">Heavenly Hands</h1>
           <p className="mt-1 text-muted-foreground">Community Health Alert System</p>
-        </div>
+        </Link>
 
         <Card>
           <CardHeader className="text-center">

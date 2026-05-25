@@ -1,20 +1,25 @@
 import Link from "next/link"
 import { Heart, ArrowRight, Shield, Bell, Users } from "lucide-react"
+import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen">
+    <div className="flex-1">
       {/* Header */}
       <header className="border-b border-border bg-card">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <div className="flex items-center gap-3">
+          <Link
+            href="/"
+            aria-label="Back to landing page"
+            className="flex items-center gap-3 rounded-md transition-opacity hover:opacity-85 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4"
+          >
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary">
               <Heart className="h-5 w-5 text-primary-foreground" fill="currentColor" />
             </div>
             <span className="text-xl font-semibold text-foreground">Heavenly Hands</span>
-          </div>
+          </Link>
           <nav className="flex items-center gap-4">
             <Link href="/auth/login">
               <Button variant="ghost">Sign In</Button>
@@ -26,8 +31,61 @@ export default function HomePage() {
         </div>
       </header>
 
+      {/* Preview Access */}
+      <section className="border-b border-[oklch(0.78_0.13_75)] bg-[oklch(0.97_0.04_85)] py-10">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
+            <div className="max-w-xl">
+              <Badge className="border-[oklch(0.45_0.11_70)] bg-[oklch(0.35_0.10_70)] text-white">
+                Preview access
+              </Badge>
+              <h2 className="mt-4 text-2xl font-bold tracking-tight text-foreground">
+                Explore the Platform
+              </h2>
+              <p className="mt-3 text-muted-foreground">
+                Use these demo entry points to preview member and administrator workflows.
+              </p>
+            </div>
+            <div className="grid flex-1 gap-4 sm:grid-cols-2">
+              <Link href="/onboarding">
+                <Card className="group cursor-pointer border-[oklch(0.78_0.13_75)] bg-white/80 shadow-sm transition-all hover:border-[oklch(0.55_0.12_180)] hover:bg-white hover:shadow-md">
+                  <CardContent className="flex items-center gap-4 p-5">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[oklch(0.90_0.05_180)] transition-colors group-hover:bg-[oklch(0.84_0.08_180)]">
+                      <Users className="h-6 w-6 text-primary" />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <CardTitle className="text-base">Member Preview</CardTitle>
+                      <CardDescription className="mt-1">
+                        Try onboarding and check-ins
+                      </CardDescription>
+                    </div>
+                    <ArrowRight className="h-5 w-5 text-muted-foreground transition-transform group-hover:translate-x-1 group-hover:text-primary" />
+                  </CardContent>
+                </Card>
+              </Link>
+              <Link href="/admin">
+                <Card className="group cursor-pointer border-[oklch(0.78_0.13_75)] bg-white/80 shadow-sm transition-all hover:border-[oklch(0.55_0.12_180)] hover:bg-white hover:shadow-md">
+                  <CardContent className="flex items-center gap-4 p-5">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[oklch(0.92_0.05_75)] transition-colors group-hover:bg-[oklch(0.86_0.08_75)]">
+                      <Shield className="h-6 w-6 text-[oklch(0.45_0.11_70)]" />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <CardTitle className="text-base">Admin Preview</CardTitle>
+                      <CardDescription className="mt-1">
+                        Review alerts and members
+                      </CardDescription>
+                    </div>
+                    <ArrowRight className="h-5 w-5 text-muted-foreground transition-transform group-hover:translate-x-1 group-hover:text-primary" />
+                  </CardContent>
+                </Card>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Hero */}
-      <section className="relative overflow-hidden py-24">
+      <section className="relative overflow-hidden py-20">
         <div className="mx-auto max-w-6xl px-6">
           <div className="mx-auto max-w-3xl text-center">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
@@ -110,64 +168,20 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Demo Access */}
-      <section className="py-24">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-foreground">
-              Explore the Platform
-            </h2>
-            <p className="mt-4 text-muted-foreground">
-              View the demo to see how the platform works for members and administrators.
-            </p>
-          </div>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2">
-            <Link href="/onboarding">
-              <Card className="group cursor-pointer transition-all hover:border-primary hover:shadow-md">
-                <CardContent className="flex items-center gap-4 p-6">
-                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-primary/10 transition-colors group-hover:bg-primary/20">
-                    <Users className="h-7 w-7 text-primary" />
-                  </div>
-                  <div className="flex-1">
-                    <CardTitle className="text-lg">Member Onboarding</CardTitle>
-                    <CardDescription className="mt-1">
-                      Experience the sign-up flow and check-in dashboard
-                    </CardDescription>
-                  </div>
-                  <ArrowRight className="h-5 w-5 text-muted-foreground transition-transform group-hover:translate-x-1 group-hover:text-primary" />
-                </CardContent>
-              </Card>
-            </Link>
-            <Link href="/admin">
-              <Card className="group cursor-pointer transition-all hover:border-primary hover:shadow-md">
-                <CardContent className="flex items-center gap-4 p-6">
-                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-primary/10 transition-colors group-hover:bg-primary/20">
-                    <Shield className="h-7 w-7 text-primary" />
-                  </div>
-                  <div className="flex-1">
-                    <CardTitle className="text-lg">Admin Dashboard</CardTitle>
-                    <CardDescription className="mt-1">
-                      View member management and alert monitoring
-                    </CardDescription>
-                  </div>
-                  <ArrowRight className="h-5 w-5 text-muted-foreground transition-transform group-hover:translate-x-1 group-hover:text-primary" />
-                </CardContent>
-              </Card>
-            </Link>
-          </div>
-        </div>
-      </section>
-
       {/* Footer */}
       <footer className="border-t border-border bg-muted/30">
         <div className="mx-auto max-w-6xl px-6 py-12">
           <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
-            <div className="flex items-center gap-3">
+            <Link
+              href="/"
+              aria-label="Back to landing page"
+              className="flex items-center gap-3 rounded-md transition-opacity hover:opacity-85 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4"
+            >
               <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
                 <Heart className="h-4 w-4 text-primary-foreground" fill="currentColor" />
               </div>
               <span className="font-semibold text-foreground">Heavenly Hands</span>
-            </div>
+            </Link>
             <p className="text-sm text-muted-foreground">
               A US-based charity supporting community health
             </p>
